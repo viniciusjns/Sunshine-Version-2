@@ -17,12 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildTypes.each {
-        it.buildConfigField 'String', 'OPEN_WEATHER_MAP_API_KEY', '"636e632ffada51b4f5cf20fbe801302e"'
-    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile files('libs/volley.jar')
     compile 'com.android.support:appcompat-v7:21.0.2'
+    compile 'com.google.code.gson:gson:2.2.4'
 }

@@ -3,6 +3,7 @@ package com.example.android.sunshine.app;
 import android.content.Context;
 import android.database.Cursor;
 import android.support.v4.widget.CursorAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +60,8 @@ public class ForecastAdapter extends CursorAdapter {
         // we'll keep the UI functional with a simple (and slow!) binding.
 
         TextView tv = (TextView)view;
-        tv.setText(convertCursorRowToUXFormat(cursor));
+        String tmp = convertCursorRowToUXFormat(cursor);
+        Log.i("ForecastAdapter", "cursor: " + cursor.toString());
+        tv.setText(tmp);
     }
 }

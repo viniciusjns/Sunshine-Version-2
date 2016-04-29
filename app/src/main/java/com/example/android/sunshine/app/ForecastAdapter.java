@@ -61,7 +61,6 @@ public class ForecastAdapter extends CursorAdapter {
 
         TextView tv = (TextView)view;
         String tmp = convertCursorRowToUXFormat(cursor);
-        Log.i("ForecastAdapter", "cursor: " + cursor.toString());
         tv.setText(tmp);
     }
 }

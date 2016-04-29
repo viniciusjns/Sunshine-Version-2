@@ -60,8 +60,9 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
     private static final String TAG = "ForecastFragment";
 
     private Context mContext;
-    private City city = new City();
+    private City city;
     private Gson gson = new Gson();
+    private City.Weather weather;
 
     private static final int FORECAST_LOADER = 0;
     // For the forecast view we're showing only a small subset of the stored data.
@@ -275,6 +276,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
         final String OWM_WEATHER = "weather";
 
         try {
+            Log.i(TAG, "forecastJson: " + forecastJsonStr);
             JSONObject forecastJson = new JSONObject(forecastJsonStr);
             JSONArray weatherArray = forecastJson.getJSONArray(OWM_LIST);
 
@@ -300,7 +302,7 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
                 city = gson.fromJson(weatherArray.get(i).toString(), City.class);
                 JSONObject weatherObject =
                         weatherArray.getJSONObject(i).getJSONArray(OWM_WEATHER).getJSONObject(0);
-                City.Weather weather = gson.fromJson(weatherObject.toString(), City.Weather.class);
+                weather = gson.fromJson(weatherObject.toString(), City.Weather.class);
                 city.setWeatherId(weather.getId());
                 city.setMain(weather.getMain());
                 city.setDesc(weather.getDescription());
